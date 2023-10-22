@@ -109,27 +109,39 @@
         </div>
       </div>
       <div class="col-md-6 col-lg-5 px-0">
-        <form action="#">
+        <form action="/signup" method="post">
           <div>
-            <input type="text" placeholder="Name" />
+            <input type="text" placeholder="Name" name="name" />
           </div>
           <div>
-            <input type="email" placeholder="Email" />
+            <input type="email" placeholder="Email" name="email"/>
           </div>
           <div>
-            <input type="text" placeholder="Phone" />
+            <input type="text" placeholder="Phone" name="phone"/>
           </div>
           <div>
-            <input type="password"  placeholder="Create password" />
+            <input type="password"  placeholder="Create password" name="password"/>
           </div>
           <div>
-              <input type="password"  placeholder="Re-enter password" />
+              <input type="password"  placeholder="Re-enter password" name="rpassword"/>
             </div>
           <div class="d-flex ">
             <button>
               SignUp
             </button>
           </div>
+          <br>
+          <div id="error-message" style=" color: red; align-items: center;"></div>
+          <script>
+            document.addEventListener('DOMContentLoaded', () => {
+              const urlParams = new URLSearchParams(window.location.search);
+              const errorMessage = urlParams.get('error');
+              if (errorMessage) {
+                const errorMessageElement = document.getElementById('error-message');
+                errorMessageElement.textContent = errorMessage;
+              }
+            });
+          </script>
         </form>
       </div>
     </div>
