@@ -13,8 +13,7 @@ try{
     const { title, description, price } = req.body;
     const newservice = new User({ title, description, price });
     await newservice.save();
-    const loginPagePath = path.join(__dirname, '../public/admin1.html');
-    res.sendFile(loginPagePath);
+    res.redirect('/admin1' );
 } 
 catch (err) 
 {

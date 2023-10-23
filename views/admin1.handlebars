@@ -45,7 +45,7 @@
         <!-- Sidebar Start -->
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-light navbar-light">
-                <a href="admin1.html" class="navbar-brand mx-4 mb-3">
+                <a href="admin1" class="navbar-brand mx-4 mb-3">
                     <div style="display: flex; align-items: center;">
                         <img src="images/favicon.png" alt="" style="max-width: 30%; height: 40px; flex: 1;">
                         <h4 style="max-width: 60%;  flex: 1; padding-left: 20px; padding-top: 10px;" class="text-primary">
@@ -59,12 +59,12 @@
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0">Jhon Doe</h6>
+                        <h6 class="mb-0">Admin1</h6>
                         <span>Admin</span>
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="admin1.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="admin1" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <a href="#" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Services</a>
                     <a href="#" class="nav-item nav-link"><i class="fa fa-envelope me-2"></i>Bills</a>
                     <a href="#" class="nav-item nav-link"><i class="fa fa-bell me-2"></i>Settings</a>
@@ -86,12 +86,12 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <img class="rounded-circle me-lg-2" src="images/user.png" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex">John Doe</span>
+                            <span class="d-none d-lg-inline-flex">admin@email.com</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                             <a href="#" class="dropdown-item">My Profile</a>
                             <a href="#" class="dropdown-item">Settings</a>
-                            <a href="#" class="dropdown-item">Log Out</a>
+                            <a href="/" class="dropdown-item">Log Out</a>
                         </div>
                     </div>
                 </div>
@@ -160,14 +160,18 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                {{#each services}}
                                 <tr>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
+                                    
+                                    <td>{{this.date}}</td>
+                                    <td>{{this.id}}</td>
+                                    <td>{{this.title}}</td>
+                                    <td>{{this.price}}</td>
+                                    <td>{{this.no_of_clints}}</td>
                                     <td><a  href="#popup1" >Detail</a></td>
+                                    
                                 </tr>
+                                {{/each}}
                             </tbody>
                         </table>
                     </div>
@@ -187,15 +191,15 @@
                         <label for="exampleInputEmail1" class="form-label" style="color: black;">Services Added Date</label>
                         <input class="form-control" type="text" value="{{this.date}}" aria-label="Disabled input example" disabled readonly>
                         <label for="exampleInputEmail1" class="form-label" style="color: black;">Id</label>
-                        <input class="form-control" type="text" value="{{this.Id}}" aria-label="Disabled input example" disabled readonly>
+                        <input class="form-control" type="text" value="{{this.id}}" aria-label="Disabled input example" disabled readonly>
                         <label for="exampleInputEmail1" class="form-label" style="color: black;">Name</label>
                         <input class="form-control" type="text" value="{{this.title}}" aria-label="Disabled input example" disabled readonly>
                         <label for="exampleInputEmail1" class="form-label" style="color: black;">Amount per hr</label>
                         <input class="form-control" type="text" value="{{this.price}}" aria-label="Disabled input example" disabled readonly>
                         <label for="exampleInputEmail1" class="form-label" style="color: black;">No of Client</label>
                         <input class="form-control" type="text" value="{{this.no_of_clints}}" aria-label="Disabled input example" disabled readonly>
-                        <label for="exampleInputEmail1" class="form-label" style="color: black;">Full Description</label>
-                        <textarea class="form-control"  value = "{{this.description}}" aria-label="With textarea" disabled readonly></textarea>
+                        <label for="exampleInputEmail1" class="form-label" style="color: black;">Full Description</label><br>
+                        <p>{{this.description}}</p>
                         {{/each}}
                     </div>
                 </div>

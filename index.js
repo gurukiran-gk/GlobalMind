@@ -1,29 +1,21 @@
 const express = require("express");
+const app = express();
+const exphbs = require('express-handlebars');
+const path = require('path');
 const mongoose = require("mongoose");
 const newUserR = require("./routes/newuser");
 const loginU = require("./routes/login")
 const newservice = require("./routes/newservice")
 const service = require("./routes/services")
-const app = express();
 app.use(express.urlencoded({ extended: true }));
 const port = 3000;
-const exphbs = require('express-handlebars');
-const path = require('path');
-app.engine('handlebars', exphbs({ defaultLayout: 'admin1' }));
+
 
 app.set('view engine', 'handlebars');
 
-app.engine(
-  'handlebars',
-  exphbs({
-    extname: '.handlebars', // Set the file extension for Handlebars templates
-    defaultLayout: 'admin1', // Specify the default layout
-    layoutsDir: path.join(__dirname, 'views/'), // Path to the layouts directory
-  })
-);
+app.engine('handlebars',exphbs({extname: '.handlebars', defaultLayout: 'main',layoutsDir: path.join(__dirname, 'views/'),allowProtoPropertiesByDefault: true,  }));
 
 app.use(express.static('public'));
-app.use(express.static('public2'));
 
 app.get("/", (req, res) => {
     const indexPagePath = __dirname + "/public/index.html";
