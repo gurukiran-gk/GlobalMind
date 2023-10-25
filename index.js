@@ -40,3 +40,4 @@ mongoose.connect("mongodb+srv://root:root12345678@globalmind.3krcaq3.mongodb.net
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
+
